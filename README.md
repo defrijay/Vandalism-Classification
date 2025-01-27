@@ -1,7 +1,26 @@
 # Application of Deep Learning to Classify Vandalism and Non-Vandalism Images
 
-##Group 3
-1. Bocah Aditya Rohmaulana (2203488)
+## Table of Contents
+1. [Group Members](#group-members)
+2. [Introduction](#introduction)
+   - [Definition of Vandalism and Its Differences with Graffiti and Murals](#definition-of-vandalism-and-its-differences-with-graffiti-and-murals)
+3. [Settings](#settings)
+4. [Preprocessing the Dataset](#preprocessing-the-dataset)
+   - [Dataset Size](#dataset-size)
+   - [Split Dataset](#split-dataset)
+   - [Data Augmentation](#data-augmentation)
+   - [Data Normalization](#data-normalization)
+5. [Deep Learning Model Architecture](#deep-learning-model-architecture)
+   - [Model 1 (Base)](#model-1-base)
+   - [Model 2 (With Dropout)](#model-2-with-dropout)
+   - [Model 3 (Revised Dataset)](#model-3-revised-dataset)
+6. [Training Model](#training-model)
+   - [Evaluation Results](#evaluation-results)
+7. [Conclusions](#conclusions)
+8. [Additional Notes](#additional-notes)
+
+## Group Members
+1. Boy Aditya Rohmaulana (2203488)
 2. Defrizal Yahdiyan Risyad (2206131)
 3. Muhammad Furqon Al-Haqqi (2207207)
 4. Raya Cahya Nurani (2205714)
@@ -11,12 +30,11 @@
 This notebook aims to discuss the application of deep learning algorithms to the task of classifying vandalism and non-vandalism images. With rapid urbanization, monitoring signs of vandalism is important to maintain the beauty and cleanliness of the environment.
 
 ### Definition of Vandalism and Its Differences with Graffiti and Murals
-- Vandalism: An act of cruelly destroying other people's work and valuables.
-- Graffiti: Scribbling on a wall with artistic considerations (color, line, shape, volume).
+- **Vandalism**: An act of cruelly destroying other people's work and valuables.
+- **Graffiti**: Scribbling on a wall with artistic considerations (color, line, shape, volume).
+- **Mural**: Painting on a permanent surface such as a wall.
 
-- Mural: Painting on a permanent surface such as a wall or a wall.
-
-We group graffiti and murals into the `not_vandalized` class assuming that graffiti and murals are not vandalism if done with permission.
+We group graffiti and murals into the `not_vandalized` class, assuming that graffiti and murals are not vandalism if done with permission.
 
 ## Settings
 - **Framework**: TensorFlow
@@ -25,8 +43,8 @@ We group graffiti and murals into the `not_vandalized` class assuming that graff
 ## Preprocessing the Dataset
 ### Dataset Size
 - **Initial classes**:
-- `vandalized`: 168 images
-- `not_vandalized`: 133 images
+  - `vandalized`: 168 images
+  - `not_vandalized`: 133 images
 
 ### Split Dataset
 - Training: 80%
@@ -39,12 +57,12 @@ Augmentation is done to increase the variation of the dataset with techniques su
 - Random zoom
 
 ### Data Normalization
-RGB values ​​from [0,255] are normalized to [0, 1].
+RGB values from [0,255] are normalized to [0, 1].
 
 ## Deep Learning Model Architecture
 ### Model 1 (Base)
 1. **Convolution Layer**:
-- 3 layers with 16, 32, 64 filters.
+   - 3 layers with 16, 32, 64 filters.
 2. **Pooling**: Max Pooling.
 3. **Dense Layer**: 128 units.
 4. **Output Layer**: Based on the number of classes (2 classes).
@@ -58,9 +76,9 @@ The `not_vandalized` data was improved by moving 51 graffiti/mural images that w
 - **`not_vandalized`: 82 images**
 
 ## Training Model
-- Optimizer: Adam
-- Loss Function: SparseCategoricalCrossentropy
-- Epochs: 10-15
+- **Optimizer**: Adam
+- **Loss Function**: SparseCategoricalCrossentropy
+- **Epochs**: 10-15
 
 ### Evaluation Results
 The evaluation results show that the model has better validation accuracy after the dataset revision. The previous model had difficulty classifying images due to ambiguous initial assumptions.
